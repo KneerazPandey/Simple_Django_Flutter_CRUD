@@ -21,12 +21,12 @@ def login_user(request):
         email = request.data.get('email')
         password = request.data.get('password')
         user = authenticate(request, email=email, password=password)
+        if user is None:
+            return Response({'error': 'Email and password did not match'}, status=status.HTTP_400_BAD_REQUEST)
         data = {}
         data['id'] = str(user.id)
         data['email'] = user.email
         data['phoneNumber'] = str(user.phoneNumber)
-        if user is not None:
-            return Response(data, status=status.HTTP_200_OK)
-        return Response({'error': 'Email and password did not match'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data, status=status.HTTP_200_OK)
     return Response({'error': 'Email and password did not match'}, status=status.HTTP_400_BAD_REQUEST)
         

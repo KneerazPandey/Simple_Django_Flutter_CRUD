@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/log_in/screen/log_in_screen.dart';
 import 'package:frontend/screens/sign_up/services/sign_up_service.dart';
 import 'package:frontend/widgets/custom_button.dart';
 import 'package:frontend/widgets/custom_snack_bar.dart';
@@ -101,7 +100,6 @@ class _SignUpFormState extends State<SignUpForm> {
                 if (_password1Controller.text == _password2Controller.text) {
                   if (isAccepted) {
                     signUpUser();
-                    Navigator.pushNamed(context, LogInScreen.routeName);
                   } else {
                     CustomSnackBar.showSnackBar(
                       context: context,

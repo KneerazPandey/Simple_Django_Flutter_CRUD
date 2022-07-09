@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/user.dart';
+import 'package:frontend/screens/log_in/screen/log_in_screen.dart';
 import 'package:frontend/widgets/custom_snack_bar.dart';
 import 'package:frontend/widgets/http_error_handling.dart';
 import 'package:http/http.dart';
@@ -35,6 +36,7 @@ class SignUpService {
             context: context,
             text: 'Account Created! Please login with the same credentials',
           );
+          Navigator.pushNamed(context, LogInScreen.routeName);
         },
       );
     } catch (error) {

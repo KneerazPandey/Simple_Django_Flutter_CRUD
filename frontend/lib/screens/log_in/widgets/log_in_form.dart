@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/home/screen/home_screen.dart';
 import 'package:frontend/screens/log_in/services/log_in_service.dart';
 import 'package:frontend/widgets/custom_button.dart';
 import 'package:frontend/widgets/custom_text_form_field.dart';
@@ -76,14 +75,9 @@ class _LogInFormState extends State<LogInForm> {
           ),
           const SizedBox(height: 12),
           CustomButton(
-            onPressed: () {
+            onPressed: () async {
               if (_formKey.currentState!.validate()) {
                 logIn();
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  HomeScreen.routeName,
-                  (route) => false,
-                );
               }
             },
             buttonName: 'Log In',

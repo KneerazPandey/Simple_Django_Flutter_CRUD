@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:frontend/controllers/controller.dart';
 import 'package:frontend/models/user.dart';
+import 'package:frontend/screens/home/screen/home_screen.dart';
 import 'package:frontend/widgets/custom_snack_bar.dart';
 import 'package:frontend/widgets/http_error_handling.dart';
 import 'package:http/http.dart';
@@ -34,6 +35,11 @@ class LogInService {
           CustomSnackBar.showSnackBar(
             context: context,
             text: 'Login Sucessfull',
+          );
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            HomeScreen.routeName,
+            (route) => false,
           );
         },
       );
