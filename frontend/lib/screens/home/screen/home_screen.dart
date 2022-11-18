@@ -4,6 +4,7 @@ import 'package:frontend/screens/create_book/screen/create_book_screen.dart';
 import 'package:frontend/screens/detail_book/screen/detail_book_screen.dart';
 import 'package:frontend/screens/home/services/book_service.dart';
 import 'package:frontend/screens/home/widgets/book_tile.dart';
+import 'package:frontend/screens/log_in/screen/log_in_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -44,6 +45,78 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         backgroundColor: const Color(0xFF101010),
+        drawer: Drawer(
+          backgroundColor: const Color(0xFF101010),
+          child: Column(
+            children: [
+              DrawerHeader(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2017/03/19/20/19/ball-2157465__340.png",
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              ListTile(
+                onTap: () async {
+                  Navigator.pop(context);
+                  await Navigator.pushNamed(
+                    context,
+                    CreateBookScreen.routeName,
+                  );
+                },
+                contentPadding: const EdgeInsets.only(left: 30),
+                title: Row(
+                  children: [
+                    const Icon(
+                      Icons.upload,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(width: 30),
+                    Text(
+                      'Upload New Book',
+                      style: GoogleFonts.poppins(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 2),
+              ListTile(
+                onTap: () async {
+                  Navigator.pop(context);
+                  await Navigator.pushNamed(
+                    context,
+                    LogInScreen.routeName,
+                  );
+                },
+                contentPadding: const EdgeInsets.only(left: 30),
+                title: Row(
+                  children: [
+                    const Icon(
+                      Icons.logout,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(width: 30),
+                    Text(
+                      'Log Out',
+                      style: GoogleFonts.poppins(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 11, 11, 11),
           title: Text(
@@ -53,12 +126,6 @@ class _HomeScreenState extends State<HomeScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.menu),
-            ),
-          ],
           elevation: 0,
         ),
         body: Padding(
